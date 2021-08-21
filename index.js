@@ -4,7 +4,9 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
+const generateTeamProfile = require('./src/template');
 const teamArray = [];
+// const htmlTemplate = require('./template');
 
 
 function addManager() {
@@ -100,13 +102,89 @@ function addEngineer() {
 }
 
 function addIntern() {
-
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: 'What the intern\'s name?'
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'What the intern\'s id?'
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'What the intern\'s email?'
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: 'What the intern\'s school?'
+            },
+        ])
+        .then(res => {
+            console.log(res);
+            const {name, id, email, school} = res;
+            const intern = new Intern(name, id, email, school);
+            teamArray.push(intern);
+            addTeamMember();
+        });
 }
 
 function completeTeam() {
+    console.log(teamArray);
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/team-profile.html', `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Team Profile</title>
+            </head>
+            <body>
+            Hello World#2!
+            </body>
+        </html>
+        `, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+    
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+    
+    // const writeFile = fileContent => {
+    //     return new Promise((resolve, reject) => {
+    //         fs.writeFile('./dist/team-profile.html', fileContent, err => {
+    //             if (err) {
+    //                 reject(err);
+    //                 return;
+    //             }
 
+    //             resolve({
+    //                 ok: true,
+    //                 message: 'File created!'
+    //             }
+    //             )
+    //         })
+    //     })
+    // }
+    // writeToFile('team-profile.html', generateTeamProfile(res));
 // take team array & find a way to render into html with fs
-
 }
+
+// const writeFile = fileContent => {
+//     return new Promise 
+// }
 
 addManager();
