@@ -28,7 +28,7 @@ const generateTeamCards = (team) => {
                 <ul class="list-group">
                     <li>ID: ${engineer.getId()}</li>
                     <li>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                    <li>Github: ${engineer.getGithub()}</li>
+                    <li>Github: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
                 </ul>  
             </div>
         </div>
