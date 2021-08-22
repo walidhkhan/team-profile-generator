@@ -9,7 +9,7 @@ const generateTeamCards = (team) => {
             <div class="card-body">
                 <ul class="list-group">
                     <li>ID: ${manager.getId()}</li>
-                    <li>Email: ${manager.getEmail()}</li>
+                    <li>Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
                     <li>Office Number: ${manager.getOfficeNumber()}</li>
                 </ul>  
             </div>
@@ -27,7 +27,7 @@ const generateTeamCards = (team) => {
             <div class="card-body">
                 <ul class="list-group">
                     <li>ID: ${engineer.getId()}</li>
-                    <li>Email: ${engineer.getEmail()}</li>
+                    <li>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
                     <li>Github: ${engineer.getGithub()}</li>
                 </ul>  
             </div>
@@ -45,7 +45,7 @@ const generateTeamCards = (team) => {
             <div class="card-body">
                 <ul class="list-group">
                     <li>ID: ${intern.getId()}</li>
-                    <li>Email: ${intern.getEmail()}</li>
+                    <li>Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
                     <li>School: ${intern.getSchool()}</li>
                 </ul>  
             </div>

@@ -135,7 +135,7 @@ function addIntern() {
 }
 
 function completeTeam() {
-    fs.writeFileSync('team-profile2.html', generateTeamProfile(teamArray), 'utf-8');
+    fs.writeFileSync('team-profile.html', generateTeamProfile(teamArray), 'utf-8');
     };
     
     // const writeFile = fileContent => {
