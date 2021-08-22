@@ -4,7 +4,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
-const generateTeamProfile = require('./src/template');
+const generateTeamProfile = require('./src/template.js');
 const teamArray = [];
 // const htmlTemplate = require('./template');
 
@@ -135,33 +135,8 @@ function addIntern() {
 }
 
 function completeTeam() {
-    console.log(teamArray);
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/team-profile.html', `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Team Profile</title>
-            </head>
-            <body>
-            Hello World#2!
-            </body>
-        </html>
-        `, err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-    
-            resolve({
-                ok: true,
-                message: 'File created!'
-            });
-        });
-    });
+    fs.writeFileSync('team-profile2.html', generateTeamProfile(teamArray), 'utf-8');
+    };
     
     // const writeFile = fileContent => {
     //     return new Promise((resolve, reject) => {
@@ -181,7 +156,7 @@ function completeTeam() {
     // }
     // writeToFile('team-profile.html', generateTeamProfile(res));
 // take team array & find a way to render into html with fs
-}
+
 
 // const writeFile = fileContent => {
 //     return new Promise 

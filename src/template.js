@@ -1,17 +1,97 @@
-// const generateTeamProfile = (res) => {
-//     return `
-//     <!DOCTYPE html>
-//     <html lang="en">
-//     <head>
-//         <meta charset="UTF-8">
-//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-//         <title>Team Profile</title>
-//         </head>
-//         <body>
-//         </body>
-//     </html>
-//     `;
-// };
+const generateTeamCards = (team) => {
+    const generateManagerCard = manager => {
+        return `
+        <div class="card">
+        <div class="card-header">
+        <h2>${manager.getName()}</h2>
+        <h3> <i class="fas fa-coffee"></i> ${manager.getRole()}</h3>
+        </div>
+        <div class="card-body">
+        <ul>
+            <li>ID: ${manager.getId()}</li>
+            <li>Email: ${manager.getEmail()}</li>
+            <li>Office Number: ${manager.getOfficeNumber()}</li>
+        </ul>  
+    </div>
+    `
+    }
 
-// module.exports = generateTeamProfile;
+    const generateEngineerCard = engineer => {
+        return `
+        <div class="card">
+        <div class="card-header">
+        <h2>${engineer.getName()}</h2>
+        <h3> <i class="fas fa-glasses"></i> ${engineer.getRole()}</h3>
+        </div>
+        <div class="card-body">
+        <ul>
+            <li>ID: ${engineer.getId()}</li>
+            <li>Email: ${engineer.getEmail()}</li>
+            <li>Github: ${engineer.getGithub()}</li>
+        </ul>  
+    </div>
+    `
+    }
+
+    const generateInternCard = intern => {
+        return `
+        <div class="card">
+        <div class="card-header">
+        <h2>${intern.getName()}</h2>
+        <h3> <i class="fas fa-user-graduate"></i> ${intern.getRole()}</h3>
+        </div>
+        <div class="card-body">
+        <ul>
+            <li>ID: ${intern.getId()}</li>
+            <li>Email: ${intern.getEmail()}</li>
+            <li>School: ${intern.getSchool()}</li>
+        </ul>  
+    </div>
+    `
+    }
+
+
+    const html = [];
+    for (const employee of team) {
+        let role = employee.getRole();
+        switch(role) {
+            case "Manager":
+            html.push(generateManagerCard(employee))
+            break;
+            case "Engineer":
+            html.push(generateEngineerCard(employee))
+            break;
+            case "Intern":
+            html.push(generateInternCard(employee))
+            break;
+        }
+        
+    }
+    return html.join("");
+};
+
+module.exports = res => {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
+        <title>Team Profile</title>
+        </head>
+
+        
+        <body>
+        <header>
+            <h1>My Team</h1>
+        </header>
+        <div class="container">
+            <div class="col-12 d-flex justify-content-center">${generateTeamCards(res)}</div>
+        </div>
+        </body>
+    </html>
+    `;
+};
