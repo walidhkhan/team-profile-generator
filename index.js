@@ -137,29 +137,5 @@ function addIntern() {
 function completeTeam() {
     fs.writeFileSync('team-profile.html', generateTeamProfile(teamArray), 'utf-8');
     };
-    
-    // const writeFile = fileContent => {
-    //     return new Promise((resolve, reject) => {
-    //         fs.writeFile('./dist/team-profile.html', fileContent, err => {
-    //             if (err) {
-    //                 reject(err);
-    //                 return;
-    //             }
-
-    //             resolve({
-    //                 ok: true,
-    //                 message: 'File created!'
-    //             }
-    //             )
-    //         })
-    //     })
-    // }
-    // writeToFile('team-profile.html', generateTeamProfile(res));
-// take team array & find a way to render into html with fs
-
-
-// const writeFile = fileContent => {
-//     return new Promise 
-// }
 
 addManager();
