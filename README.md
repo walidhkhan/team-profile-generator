@@ -18,7 +18,7 @@ This is a generator which creates a team profil via an html file based on user r
 <div id='Installation'/>
 
 ## Installation
-To install this project please clone this project's reposoitory intall the necessary dependencies and watch my walkthrough video
+To install this project please clone this project's reposoitory intall the necessary dependencies and watch my [walkthrough video](https://youtu.be/2FAs1CrLDmo)
 
 <div id='Usage'/>
 
